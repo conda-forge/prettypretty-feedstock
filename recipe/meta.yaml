@@ -1,20 +1,20 @@
 {% set name = "prettypretty" %}
-{% set version = "0.10.0" %}
+{% set version = "0.11.0" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/prettypretty-{{ version }}.tar.gz
-  sha256: 3e8cd13920f381ee538dbfffa24f46b3aab758049985d6e152b5f32c385c98dc
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/prettypretty-{{ version }}.tar.gz
+  sha256: a11e5232bc407811b9204e63160c9b3377b09b863ca3209604821e8a1d45178e
 
 build:
-  skip: True  # [py<311]
+  skip: true  # [py<311]
   script:
     - cargo-bundle-licenses --format yaml --output THIRDPARTY.yml
     - {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 2
+  number: 0
 
 requirements:
   build:
