@@ -1,5 +1,5 @@
 {% set name = "prettypretty" %}
-{% set version = "0.11.0" %}
+{% set version = "0.11.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/prettypretty-{{ version }}.tar.gz
-  sha256: a11e5232bc407811b9204e63160c9b3377b09b863ca3209604821e8a1d45178e
+  sha256: 0d5f8cd591c896f846459bdca6d4ebb9d964e6189c6c35de1c313254432173bb
 
 build:
   skip: true  # [py<311]
