@@ -6,7 +6,7 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/prettypretty-{{ version }}.tar.gz
+  url: https://files.pythonhosted.org/packages/source/{{ name[0] }}/{{ name }}/prettypretty-{{ version }}.tar.gz
   sha256: 0d5f8cd591c896f846459bdca6d4ebb9d964e6189c6c35de1c313254432173bb
 
 build:
@@ -14,7 +14,7 @@ build:
   script:
     - cargo-bundle-licenses --format yaml --output THIRDPARTY.yml
     - {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 1
+  number: 2
 
 requirements:
   build:
