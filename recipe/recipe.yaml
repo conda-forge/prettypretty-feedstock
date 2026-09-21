@@ -1,0 +1,53 @@
+schema_version: 1
+
+context:
+  name: prettypretty
+  version: "0.11.1"
+
+package:
+  name: ${{ name|lower }}
+  version: ${{ version }}
+
+source:
+  url: https://files.pythonhosted.org/packages/source/${{ name[0] }}/${{ name }}/prettypretty-${{ version }}.tar.gz
+  sha256: 0d5f8cd591c896f846459bdca6d4ebb9d964e6189c6c35de1c313254432173bb
+
+build:
+  number: 3
+  skip: match(python, "<3.11")
+  script:
+    - cargo-bundle-licenses --format yaml --output THIRDPARTY.yml
+    - ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+
+requirements:
+  build:
+    - ${{ stdlib('c') }}
+    - ${{ compiler('c') }}
+    - ${{ compiler('rust') }}
+    - cargo-bundle-licenses
+  host:
+    - python
+    - maturin >=1.0,<2.0
+    - pip
+  run:
+    - python
+
+tests:
+  - python:
+      imports:
+        - prettypretty
+      pip_check: true
+
+about:
+  summary: Applying 2020s color science to 1970s terminal user interfaces
+  license: Apache-2.0
+  license_file:
+    - LICENSE
+    - THIRDPARTY.yml
+  homepage: https://apparebit.github.io/prettypretty/
+  repository: https://github.com/apparebit/prettypretty
+  documentation: https://apparebit.github.io/prettypretty/python/
+
+extra:
+  recipe-maintainers:
+    - thewchan
