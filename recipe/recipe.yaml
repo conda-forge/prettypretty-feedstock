@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: prettypretty
-  version: "0.11.1"
+  version: "0.12.0"
 
 package:
   name: ${{ name|lower }}
@@ -10,10 +10,10 @@ package:
 
 source:
   url: https://files.pythonhosted.org/packages/source/${{ name[0] }}/${{ name }}/prettypretty-${{ version }}.tar.gz
-  sha256: 0d5f8cd591c896f846459bdca6d4ebb9d964e6189c6c35de1c313254432173bb
+  sha256: e27349090c3bdf60de2e12ec2f820d00a863f21bb5a98cfaa9e5f75f9447eb7c
 
 build:
-  number: 3
+  number: 0
   skip: match(python, "<3.11")
   script:
     - cargo-bundle-licenses --format yaml --output THIRDPARTY.yml
